@@ -1,12 +1,19 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "@/app/store";
 
-export const selectProducts = (state: RootState) => state.products.items;
+const selectProductState = (state: RootState) => state.products;
 
-export const selectCategories = createSelector(
-  [selectProducts],
-  products => {
-    const categories = new Set(products.map(p => p.category));
-    return ["ALL", ...Array.from(categories)];
-  }
+export const selectProductList = createSelector(
+  [selectProductState],
+  products => products.list
+);
+
+export const selectProductStatus = createSelector(
+  [selectProductState],
+  products => products.status
+);
+
+export const selectProductCategories = createSelector(
+  [selectProductList],
+  list => ["ALL", ...Array.from(new Set(list.map(p => p.category)))]
 );

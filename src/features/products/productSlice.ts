@@ -1,20 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchProducts } from "../../services/api";
-import { ProductWithPrice } from "../../types/index";
+import { fetchProducts, fetchPrices } from "../../services/api";
+import { mergeProducts } from "../../utils/mergeProducts";
+import { ProductState } from "../../types/index";
 
 export const loadProducts = createAsyncThunk(
   "products/load",
   async () => {
-    return await fetchProducts();
+    const [products, prices] = await Promise.all([
+      fetchProducts(),
+      fetchPrices()
+    ]);
+
+    return mergeProducts(products, prices);
   }
 );
 
+const initialState: ProductState = {
+  list: [],
+  status: "idle"
+};
+
 const productSlice = createSlice({
   name: "products",
-  initialState: {
-    items: [] as ProductWithPrice[],
-    status: "idle"
-  },
+  initialState,
   reducers: {},
   extraReducers: builder => {
     builder
@@ -22,7 +30,7 @@ const productSlice = createSlice({
         state.status = "loading";
       })
       .addCase(loadProducts.fulfilled, (state, action) => {
-        state.items = action.payload;
+        state.list = action.payload;
         state.status = "success";
       });
   }

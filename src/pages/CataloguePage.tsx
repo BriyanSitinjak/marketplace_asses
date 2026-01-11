@@ -1,64 +1,76 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { loadProducts } from "../features/products/productSlice";
-import { selectCategories, selectProducts } from "../features/products/productSelector";
 import { addToCart } from "../features/cart/cartSlice";
-import { ProductCard } from "../components/ProductCard";
-import { CategoryTabs } from "../components/CategoryTabs";
 import { useNavigate } from "react-router-dom";
 
 export function CataloguePage() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const products = useAppSelector(selectProducts);
-  const categories = useAppSelector(selectCategories);
-  const status = useAppSelector(state => state.products.status);
-  const cart = useAppSelector(state => state.cart); 
+  const { list, status } = useAppSelector(state => state.products);
+  const cart = useAppSelector(state => state.cart);
 
   const [activeCategory, setActiveCategory] = useState("ALL");
+
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(loadProducts());
+    }
+  }, [dispatch, status]);
+
+  if (status === "loading") {
+    return <p>Loading products...</p>;
+  }
+
+  const categories = [
+    "ALL",
+    ...Array.from(new Set(list.map(p => p.category)))
+  ];
+
+  const filteredProducts =
+    activeCategory === "ALL"
+      ? list
+      : list.filter(p => p.category === activeCategory);
 
   const totalItems = cart.reduce(
     (sum, item) => sum + item.quantity,
     0
   );
 
-  useEffect(() => {
-    dispatch(loadProducts());
-  }, [dispatch]);
-
-  const visibleProducts =
-    activeCategory === "ALL"
-      ? products
-      : products.filter(p => p.category === activeCategory);
-
   return (
     <div className="page">
-      <h1>Product Catalogue</h1>
+      <h1>Catalogue</h1>
 
-      <CategoryTabs
-        categories={categories}
-        active={activeCategory}
-        onChange={setActiveCategory}
-      />
-
-      {status === "loading" && <p>Loading products...</p>}
-
-      <div className="wrapper">
-        <div className="grid">
-          {visibleProducts.map(product => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onAdd={() => dispatch(addToCart(product))}
-            />
-          ))}
-        </div>
+      {/* CATEGORY TABS */}
+      <div className="tabs">
+        {categories.map(cat => (
+          <button
+            key={cat}
+            className={cat === activeCategory ? "active" : ""}
+            onClick={() => setActiveCategory(cat)}
+          >
+            {cat}
+          </button>
+        ))}
       </div>
 
-      <div className="checkout-bar">
-        <span>{totalItems} item(s) in cart</span>
+      {/* PRODUCT GRID */}
+      <div className="grid">
+        {filteredProducts.map(product => (
+          <div key={product.id} className="card">
+            <h3>{product.name}</h3>
+            <p>Rp {product.price.toLocaleString("id-ID")}</p>
+            <button onClick={() => dispatch(addToCart(product))}>
+              Add to Cart
+            </button>
+          </div>
+        ))}
+      </div>
 
+      {/* CHECKOUT BUTTON */}
+      <div className="checkout-bar">
+        <span>{totalItems} item(s)</span>
         <button
           className="checkout-btn"
           disabled={totalItems === 0}

@@ -1,0 +1,25 @@
+{
+    "products": [
+      { "id": "id-1", "name": "Pensil", "category": "ATK" },
+      { "id": "id-2", "name": "Buku", "category": "ATK" },
+      { "id": "id-3", "name": "Penghapus", "category": "ATK" },
+      { "id": "id-4", "name": "Papan Tulis", "category": "ATK" },
+  
+      { "id": "id-5", "name": "Kursi", "category": "FURNITURE" },
+      { "id": "id-6", "name": "Meja", "category": "FURNITURE" },
+      { "id": "id-7", "name": "Lemari", "category": "FURNITURE" },
+      { "id": "id-8", "name": "Lampu Tidur", "category": "FURNITURE" }
+    ],
+    "prices": [
+      { "productId": "id-1", "price": 5000 },
+      { "productId": "id-2", "price": 12000 },
+      { "productId": "id-3", "price": 2500 },
+      { "productId": "id-4", "price": 75000 },
+  
+      { "productId": "id-5", "price": 20000 },
+      { "productId": "id-6", "price": 30000 },
+      { "productId": "id-7", "price": 75000 },
+      { "productId": "id-8", "price": 12000 }
+    ]
+  }
+  

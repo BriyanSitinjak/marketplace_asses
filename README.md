@@ -1,54 +1,56 @@
 # React + Redux Application
 
-This project is a modern React application set up with TypeScript and Redux for state management, using the recommended directory structure and tooling for scalability and maintainability.
+This project is a modern React application built with TypeScript and Redux Toolkit for state management. It follows recommended practices for scalability and long-term maintainability.
 
 ## Technologies Used
 
-- **React 18** — Declarative front-end UI library
-- **Redux** — State management solution using the Redux Toolkit
-- **TypeScript** — Static type checking
-- **SCSS** — Styling
+- **React 18**: Declarative front-end UI library
+- **Redux Toolkit**: State management and logic handling
+- **TypeScript**: For static type checking and reliability
+- **SCSS**: Styling solution for reusable component styles
+- **json-server**: Provides a mock REST API backend for development
 
 ## Project Structure & Flow
 
-- Application entry point is `src/main.tsx`.  
-  The app is rendered to the DOM via a React 18 root, wrapped in `Provider` to give Redux store access throughout the component tree.
-- The Redux store is initialized in `src/app/store.ts` and made available using the official React-Redux Provider.
-- Application styling is handled using SCSS and imported in the main entry file.
-- TypeScript types are defined in relevant `.ts` and `.tsx` files.
+- The entry point is `src/main.tsx`, rendering the root React app and providing the Redux store with the `Provider` component.
+- Redux store configuration is found in `src/app/store.ts`.
+- SCSS is used for styling and is imported at the main entry point.
+- TypeScript types are organized in their corresponding type definition files.
+- Mock data and API endpoints are served using `json-server`.
 
 ## Development Commands
 
-- `npm start` — Start development server on [http://localhost:3000](http://localhost:3000)
-- `npm test` — Run all tests in watch mode
-- `npm run build` — Bundle and optimize for production
+- `npm start` — Start the app locally at [http://localhost:3000](http://localhost:3000)
+- `npm run build` — Create an optimized production build
+- `npm run server` — Start json-server on [http://localhost:4000](http://localhost:4000) with mock data
 
 ## Approach
 
-- Follows a modular and scalable architecture using feature-based blocks.
-- Uses TypeScript for safety and improved developer experience.
-- Centralizes state management using Redux, enabling predictable state logic.
-- Strict mode is enabled for highlighting potential issues in development.
-- All dependencies and configurations are managed to ensure maintainability and best practices.
+- Utilizes a feature-based, modular folder structure for clarity and separation of concerns.
+- TypeScript ensures type safety and smooth developer experience.
+- State is managed centrally via Redux Toolkit for predictable state logic.
+- React Strict Mode is enabled to highlight potential issues early.
+- `json-server` makes front-end development and API prototyping simpler and faster.
 
 ## Getting Started
 
-1. Install dependencies:
+1. Install all dependencies:
    ```
    npm install
    ```
-2. Start the app locally:
+2. Start the mock backend (in a separate terminal):
+   ```
+   npm run server
+   ```
+3. Start the application:
    ```
    npm start
-   ```
-3. To run tests:
-   ```
-   npm test
    ```
 
 ## Learn More
 
 - [React documentation](https://reactjs.org/)
-- [Redux documentation](https://redux.js.org/)
+- [Redux Toolkit documentation](https://redux-toolkit.js.org/)
 - [TypeScript documentation](https://www.typescriptlang.org/)
+- [json-server documentation](https://github.com/typicode/json-server)
 
