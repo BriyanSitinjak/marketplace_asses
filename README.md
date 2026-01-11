@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# React + Redux Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a modern React application set up with TypeScript and Redux for state management, using the recommended directory structure and tooling for scalability and maintainability.
 
-## Available Scripts
+## Technologies Used
 
-In the project directory, you can run:
+- **React 18** — Declarative front-end UI library
+- **Redux** — State management solution using the Redux Toolkit
+- **TypeScript** — Static type checking
+- **SCSS** — Styling
 
-### `npm start`
+## Project Structure & Flow
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Application entry point is `src/main.tsx`.  
+  The app is rendered to the DOM via a React 18 root, wrapped in `Provider` to give Redux store access throughout the component tree.
+- The Redux store is initialized in `src/app/store.ts` and made available using the official React-Redux Provider.
+- Application styling is handled using SCSS and imported in the main entry file.
+- TypeScript types are defined in relevant `.ts` and `.tsx` files.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Development Commands
 
-### `npm test`
+- `npm start` — Start development server on [http://localhost:3000](http://localhost:3000)
+- `npm test` — Run all tests in watch mode
+- `npm run build` — Bundle and optimize for production
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Approach
 
-### `npm run build`
+- Follows a modular and scalable architecture using feature-based blocks.
+- Uses TypeScript for safety and improved developer experience.
+- Centralizes state management using Redux, enabling predictable state logic.
+- Strict mode is enabled for highlighting potential issues in development.
+- All dependencies and configurations are managed to ensure maintainability and best practices.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Install dependencies:
+   ```
+   npm install
+   ```
+2. Start the app locally:
+   ```
+   npm start
+   ```
+3. To run tests:
+   ```
+   npm test
+   ```
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [React documentation](https://reactjs.org/)
+- [Redux documentation](https://redux.js.org/)
+- [TypeScript documentation](https://www.typescriptlang.org/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

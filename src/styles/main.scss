@@ -1,0 +1,146 @@
+@import "./variables";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: $gray-100;
+  color: $gray-900;
+}
+
+button {
+  cursor: pointer;
+  border-radius: $radius;
+  border: none;
+  padding: 8px 14px;
+  font-weight: 500;
+}
+
+.page {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+
+  button {
+    background: white;
+    border: 1px solid $gray-300;
+
+    &.active {
+      background: $primary;
+      color: white;
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.card {
+  background: white;
+  padding: 16px;
+  border-radius: $radius;
+  border: 1px solid $gray-300;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  text-align: center;
+  margin-bottom: 16px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  }
+
+  .category {
+    color: $gray-600;
+    font-size: 12px;
+  }
+
+  .primary {
+    background: $primary;
+    color: white;
+    width: 100%;
+    margin-top: 12px;
+  }
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+}
+
+
+button.primary {
+  transition: background 0.2s ease;
+  margin-bottom: 20px;
+
+  &:hover:not(:disabled) {
+    background: darken($primary, 5%);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkout-bar {
+  position: sticky;
+  bottom: 0;
+  margin-top: 24px;
+  padding: 16px;
+  background: white;
+  border-top: 1px solid $gray-300;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.checkout-btn {
+  background: $primary;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover:not(:disabled) {
+    background: $btn-hover;
+  }
+
+  &:disabled {
+    background: $btn-disabled;
+    cursor: not-allowed;
+  }
+}
